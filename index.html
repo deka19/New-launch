@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Early Access | Something Big is Coming</title>
+    <title>Early Access | Assam Govt Job Prep</title>
     <style>
         * {
             margin: 0;
@@ -17,11 +17,13 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
+            min-height: 100vh;
             text-align: center;
+            padding: 20px;
         }
         .container {
             max-width: 500px;
+            width: 100%;
             padding: 40px 20px;
         }
         .badge {
@@ -37,7 +39,7 @@
             text-transform: uppercase;
         }
         h1 {
-            font-size: 2.5rem;
+            font-size: 2.2rem;
             margin-bottom: 16px;
             line-height: 1.2;
         }
@@ -46,7 +48,7 @@
         }
         p {
             color: #94a3b8;
-            font-size: 1.1rem;
+            font-size: 1.05rem;
             margin-bottom: 32px;
             line-height: 1.5;
         }
@@ -55,7 +57,7 @@
             flex-direction: column;
             gap: 16px;
         }
-        input[type="text"], input[type="email"] {
+        input[type="text"], input[type="email"], input[type="tel"], select {
             width: 100%;
             padding: 16px;
             border-radius: 8px;
@@ -66,8 +68,17 @@
             outline: none;
             transition: border-color 0.3s ease;
         }
-        input:focus {
+        select {
+            appearance: none;
+            cursor: pointer;
+        }
+        input:focus, select:focus {
             border-color: #8A4BDE;
+        }
+        /* Style for the select dropdown options to ensure they are legible */
+        option {
+            background-color: #1e293b;
+            color: #fff;
         }
         button {
             width: 100%;
@@ -80,6 +91,7 @@
             font-weight: bold;
             cursor: pointer;
             transition: background-color 0.3s ease, transform 0.1s ease;
+            margin-top: 8px;
         }
         button:hover {
             background-color: #743bc4;
@@ -97,28 +109,26 @@
 <body>
 
     <div class="container">
-        <div class="badge">Invite Only</div>
-        <!-- Replace with your actual value proposition -->
-        <h1>The way we do things is <span>changing.</span></h1>
-        <p>Be the first to know when we launch. Join the waitlist today to secure your exclusive founding member perks.</p>
+        <div class="badge">Assam Exclusive</div>
+        <h1>Crack your next exam. <span>Smarter.</span></h1>
+        <p>We are building the ultimate tool for Assam govt job aspirants. Join the waitlist to get exclusive early access and founding member perks.</p>
         
-                <form id="earlyAccessForm">
+        <form id="earlyAccessForm">
+            <!-- Ensure these 'name' attributes perfectly match your Google Sheet headers -->
             <input type="text" name="Name" placeholder="Your Full Name" required>
             <input type="email" name="Email" placeholder="your@email.com" required>
+            <input type="tel" name="Phone Number" placeholder="WhatsApp Number (Optional)">
             
-            <!-- Kept optional to save conversion rates -->
-            <input type="tel" name="Phone Number" placeholder="Phone Number (Optional)">
-            
-            <select name="Exam Prep" style="width: 100%; padding: 16px; border-radius: 8px; border: 1px solid #334155; background-color: #1e293b; color: #fff; font-size: 1rem; outline: none; margin-bottom: 16px; appearance: none;" required>
-                <option value="" disabled selected>Which exam are you preparing for?</option>
-                <option value="UPSC">UPSC</option>
-                <option value="APSC">APSC / State PSC</option>
-                <option value="SSC/Banking">SSC / Banking</option>
-                <option value="JEE/NEET">JEE / NEET</option>
-                <option value="Other">Other</option>
+            <select name="Exam Prep" required>
+                <option value="" disabled selected>Which exam are you targeting?</option>
+                <option value="Assam Direct Recruitment (ADRE)">Assam Direct Recruitment (ADRE)</option>
+                <option value="APSC CCE">APSC CCE</option>
+                <option value="Assam Police (SI / Constable)">Assam Police (SI / Constable)</option>
+                <option value="Assam TET / D.El.Ed">Assam TET / D.El.Ed</option>
+                <option value="PNRD / DME / Others">PNRD / DME / Other Depts</option>
             </select>
 
-            <input type="text" name="Location" placeholder="City (e.g., Guwahati)" required>
+            <input type="text" name="Location" placeholder="Your City/District (e.g., Guwahati)" required>
             
             <button type="submit" id="submitBtn">Get Early Access</button>
         </form>
@@ -126,7 +136,7 @@
     </div>
 
     <script>
-        // We will plug in the Google Apps Script Web App URL here
+        // CRITICAL: Replace this with your newly deployed Web App URL
         const scriptURL = 'YOUR_GOOGLE_APPS_SCRIPT_URL_HERE';
         const form = document.getElementById('earlyAccessForm');
         const statusMessage = document.getElementById('statusMessage');
